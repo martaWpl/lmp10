@@ -153,7 +153,6 @@ main (int argc, char **argv)
     }
 
     for (i = 0; i < n; i++) {
-//      printf("%f %f\n", fromX+i*dx, value_spl (&spl, fromX + i * dx));
       fprintf (gpf, "%g %g\n", fromX + i * dx, wartosc_parametrow (&par, fromX + i * dx));
 	}
     fclose (gpf);

@@ -7,7 +7,7 @@
 //	n-liczba punktow
 //	nb-liczba bazowa 
 //	x- wskaźnik do tablicy zawierającej współrzędne x punktów
-//	y- wskaźnik do tablicy zawierajacej współrzędne y punktów
+//	f- wskaźnik do tablicy zawierajacej współrzędne y punktów
 //	a0- współczynnik a0
 //	a- wskaźniki a dla poszczególnych punktów
 //	b- wskaźniki b dla poszczególnych punktów

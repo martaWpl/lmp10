@@ -28,7 +28,7 @@ czytaj_parametry (parametry_funkcji_t *par, FILE *inf)
 
   for (i = 0; i < par->n; i++)
     if (fscanf
-        (inf, "%lf %lf %lf %lf %lf", par->x + i, par->f + i, &(par->a0),
+        (inf, "%lf %lf %lf %lf %lf", par->x + i, par->f + i, &(par->a[0]),
          par->a + i, par->b + i ) != 5)
       return 1;
 
@@ -41,15 +41,19 @@ wypisz_parametry (parametry_funkcji_t *par, FILE *ouf)
   int i;
   fprintf (ouf, "%d\n", par->n);
   for (i = 0; i < par->n; i++)
-    fprintf (ouf, "%g %g %g %g %g\n", par->x[i], par->f[i], par->a0,
+    fprintf (ouf, "%g %g %g %g %g\n", par->x[i], par->f[i], par->a[0],
              par->a[i], par->b[i]);
 }
-
+	/* Wielomian trygonometryczny ma postac:
+	Qn(x)=a0/2 + (suma)(ak*cos(kx)+bk*sin(kx))
+	funkcja wartosc_wielomianu zwraca wartosc funkcji 
+	danym punkcie(x). Mozliwe jest to dzieki znajomosci
+	 parametrow: a0,a1,a2,...anb,b1,b2,..bnb */
 double
-wartosc_parametrow (parametry_funkcji_t *par, double x)
+wartosc_wielomianu (parametry_funkcji_t *par, double x)
 {
   int i;
-  double s=1/2*(par->a0);
+  double s=1/2*(par->a[0]);
 
   for (i = 1; i <= par->nb; i++) {
         s=s+(par->a[i])*cos(i*x)+(par->b[i])*sin(i*x);
